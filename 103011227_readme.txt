@@ -1,0 +1,106 @@
+103011227 network lab1
+Environment: C++11 winsocket
+Account.h BankSystem.h are required
+
+1. To compile the socket program please enter://Notice that it is run in C++11
+    For Client:
+    	g++ 103011227_cli.cpp -o 103011227_cli -lws2_32 -std=c++11
+    For Server
+    	g++ 103011227_ser.cpp -o 103011227_ser -lws2_32 -std=c++11
+
+2. To run the program:
+    For Client:
+        103011227_cli IP Port , where IP is the IP address and Port is the port number for the server
+        e.g.
+        103011227_cli 127.0.0.1 22
+    For Server:
+        103011227_ser Port , where Por is the port number
+        e.g.
+        103011227_ser 22
+
+3.Enter the system:
+    After enter the system both server and the client sides will display:
+        For server:
+            port22  // the port number
+            Waiting... //waiting for client
+            Client IP is : 127.0.0.1 //after connecting with the client, it will display the client't IP address
+
+        For client:
+            Receive 36 byte(s): //it will always display to show how many bit it recieve
+            welcome to Bank     // after connecting with the server, it will display the welcom message
+            login(l)  // type "l" to login
+            create(c)  // type "c" to create a account
+
+        For user who login in the first time, please type "c" to create a new account
+4. For Login and create instruction:
+    4.1 create(c) : type "c" to create a new account
+        c
+        -------------------------------
+        Receive 15 byte(s): enter your name
+
+        //Type your name you want to create
+        dunhill
+        -------------------------------
+        Receive 18 byte(s): enter the password
+        //enter the password you want to create, here it is as same as user name
+        dunhill
+        -------------------------------
+        Receive 43 byte(s): The account is created
+        Press m to continue
+        //press m to return to menu
+        m
+
+    4.2 login(l): type "l" to login in the system
+        l
+        -------------------------------
+        Receive 24 byte(s): enter your name to login
+        //enter user name. Here we type the user account in the previous example
+        dunhill
+        -------------------------------
+        Receive 18 byte(s): enter the password
+        //enter the corresponding password
+        dunhill
+        -------------------------------
+        Receive 69 byte(s): The authentication success // if the password is correct, login is success. Otherwise, it is fail.
+        Your current money: 0 //It will display to current money
+        Press m to continue
+        //press m to return to menu
+        m
+5. For each instruction: Press "d","w","i","exit"
+    	Deposite(d)
+    	Withdraw(w)
+   	Check Info(i)
+   	Exit(exit)
+
+    5.1 Deposite(d): type "d" to deposit the money
+        d
+        -------------------------------
+        Receive 36 byte(s): enter the amount of money to deposit
+        //enter the amount of money to deposit in system
+        100
+        -------------------------------
+        Receive 39 byte(s): The money you have:100 // After saving the moeny into the system, it will display the total amount of money in the bank
+        press m to next
+        //press m to return to the system
+        m
+    5.2 Withdraw(w): type "w" to withdraw the money
+        w
+        -------------------------------
+        Receive 37 byte(s): enter the amount of money to withdraw
+        //enter the amount of money you want to withdraw
+        40
+        -------------------------------
+        Receive 38 byte(s): The money you have:60 // if you have enough money, the transaction will be successful
+        press m to next
+        //press m to return to menu
+
+    5.3 Check Info(i): type "i" to check the account information
+        i
+        -------------------------------
+        Receive 45 byte(s): Account Info: dunhill 60 // it shows client's name and amount of money in the system
+        Press m to continue
+        //press m to return to the menu
+        m
+    5.4 Exit(exit): type "exit" to leave the system
+        exit
+        //it will terminate the client's connection to server and proccess as well
